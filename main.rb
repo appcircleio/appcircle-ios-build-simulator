@@ -16,13 +16,6 @@ options[:outputh_path] = ENV["AC_OUTPUT_DIR"] || abort('Missing output path.')
 options[:project_path] = ENV["AC_PROJECT_PATH"] || abort('Missing project path.')
 options[:scheme] = ENV["AC_SCHEME"] || abort('Missing scheme.')
 
-options[:xcode_list_path] = ENV["AC_XCODE_LIST_DIR"] || abort('Missing xcode list path.')
-options[:xcode_version] = ENV["AC_XCODE_VERSION"] || abort('Missing xcode version.')
-
-xcode_build_path = "#{options[:xcode_list_path]}/#{options[:xcode_version]}/Xcode.app/Contents/Developer/usr/bin/xcodebuild"
-options[:xcodebuildPath] = File.file?(xcode_build_path) ? xcode_build_path : abort("Missing xcodebuild path.")
-ENV["XCODE_DEVELOPER_DIR_PATH"] = "#{options[:xcode_list_path]}/#{options[:xcode_version]}/Xcode.app/Contents/Developer"
-
 $configuration_name = (ENV["AC_CONFIGURATION_NAME"] != nil && ENV["AC_CONFIGURATION_NAME"] !="") ? ENV["AC_CONFIGURATION_NAME"] : nil
 
 #compiler_index_store_enable - Options: YES, NO
@@ -42,7 +35,7 @@ def archive(args)
   scheme = args[:scheme]
   extname = File.extname(project_path)
   archive_path = args[:archive_path]
-  command = "#{args[:xcodebuildPath]} -scheme \"#{scheme}\" clean archive -archivePath \"#{archive_path}\" -derivedDataPath \"#{args[:temporary_path]}/DerivedData\" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO"
+  command = "xcodebuild -scheme \"#{scheme}\" clean archive -archivePath \"#{archive_path}\" -derivedDataPath \"#{args[:temporary_path]}/DerivedData\" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO"
   
   if $configuration_name != nil
     command.concat(" ")

@@ -5,10 +5,8 @@ Similar to Xcode Archive & Export step, this step also uses main configuration p
 This will output an xarchive file and lets you use the build on virtual devices like simulators.
 
 Required Input Variables
-- `$AC_XCODE_LIST_DIR`: Specifies the xcode folder list directory. Current xcode folder structure examples : /Applications/Xcode/10.3/Xcode or /Applications/Xcode/11.0/Xcode
 - `$AC_SCHEME`: Specifies the project scheme for build.
 - `$AC_PROJECT_PATH`: Specifies the project path. For example : ./appcircle.xcodeproj.
-- `$AC_XCODE_VERSION`: Specifies the xcode version.
 
 
 Optional Input Variables
