@@ -1,8 +1,10 @@
 # Appcircle Xcodebuild For Simulator
 
-This step will build your application for iOS Simulator in x86 architecture which is required for Preview on Device feature. This step creates an unsigned xarchive file.
-Similar to Xcode Archive & Export step, this step also uses main configuration parameters like project path, scheme and Xcode version and additionally use parameters like -sdk iphonesimulator, -destination generic/platform=iOS and PLATFORM_NAME=iphonesimulator.
-This will output an xarchive file and lets you use the build on virtual devices like simulators.
+This step builds your application for the iOS Simulator in x86 architecture which is required for the Preview on Device (Appcircle simulator) feature. This step creates an unsigned xarchive file.
+
+Similar to the Xcode Archive & Export step, this step also uses main configuration parameters like project path, scheme and Xcode version and additionally use parameters like -sdk iphonesimulator, -destination generic/platform=iOS and PLATFORM_NAME=iphonesimulator.
+
+This will output an xarchive file and lets you use the build on the virtual devices like simulators.
 
 Required Input Variables
 - `$AC_SCHEME`: Specifies the project scheme for build.
