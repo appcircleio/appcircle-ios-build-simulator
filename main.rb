@@ -24,7 +24,7 @@ $compiler_index_store_enable = env_has_key("AC_COMPILER_INDEX_STORE_ENABLE")
 options[:extra_options] = ["-sdk iphonesimulator","-destination generic/platform=iOS","PLATFORM_NAME=iphonesimulator"]
 
 if ENV["AC_ARCHIVE_FLAGS"] != "" && ENV["AC_ARCHIVE_FLAGS"] != nil
-  options[:extra_options] = options[:extra_options].concat(ENV["AC_ARCHIVE_FLAGS"].split(","))
+  options[:extra_options] = options[:extra_options].concat(ENV["AC_ARCHIVE_FLAGS"].split("|"))
 end
 
 options[:archive_path] = "#{options[:outputh_path]}/build_simulator.xcarchive"
