@@ -12,7 +12,7 @@ options = {}
 options[:repository_path] = ENV["AC_REPOSITORY_DIR"]
 options[:temporary_path] = ENV["AC_TEMP_DIR"] || abort('Missing temporary path.')
 options[:temporary_path] += "/appcircle_build_ios_simulator"
-options[:outputh_path] = ENV["AC_OUTPUT_DIR"] || abort('Missing output path.')
+options[:outputh_path] = env_has_key("AC_OUTPUT_DIR_PATH")
 options[:project_path] = ENV["AC_PROJECT_PATH"] || abort('Missing project path.')
 options[:scheme] = ENV["AC_SCHEME"] || abort('Missing scheme.')
 
