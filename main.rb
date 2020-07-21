@@ -70,7 +70,7 @@ def archive(args)
 end
 
 def runCommand(command)
-  puts "@[command] #{command}"
+  puts "@@[command] #{command}"
   status = nil
   stdout_str = nil
   stderr_str = nil
