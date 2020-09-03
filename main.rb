@@ -21,21 +21,20 @@ $configuration_name = (ENV["AC_CONFIGURATION_NAME"] != nil && ENV["AC_CONFIGURAT
 #compiler_index_store_enable - Options: YES, NO
 $compiler_index_store_enable = env_has_key("AC_COMPILER_INDEX_STORE_ENABLE")
 
-options[:extra_options] = ["-sdk iphonesimulator","-destination generic/platform=iOS","PLATFORM_NAME=iphonesimulator"]
+options[:extra_options] = ["-sdk iphonesimulator","-arch x86_64"]
 
 if ENV["AC_ARCHIVE_FLAGS"] != "" && ENV["AC_ARCHIVE_FLAGS"] != nil
   options[:extra_options] = options[:extra_options].concat(ENV["AC_ARCHIVE_FLAGS"].split("|"))
 end
 
-options[:archive_path] = "#{options[:outputh_path]}/build_simulator.xcarchive"
+options[:xcode_build_dir] = "#{options[:temporary_path]}/SimulatorBuildDir"
 
 def archive(args)
   repository_path = args[:repository_path]
   project_path = args[:project_path]
   scheme = args[:scheme]
   extname = File.extname(project_path)
-  archive_path = args[:archive_path]
-  command = "xcodebuild -scheme \"#{scheme}\" clean archive -archivePath \"#{archive_path}\" -derivedDataPath \"#{args[:temporary_path]}/DerivedData\" CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO"
+  command = "xcodebuild -scheme \"#{scheme}\" BUILD_DIR=\"#{args[:xcode_build_dir]}\" -derivedDataPath \"#{args[:temporary_path]}/SimulatorDerivedData\""
   
   if $configuration_name != nil
     command.concat(" ")
@@ -89,10 +88,18 @@ def runCommand(command)
 end
 
 archive(options)
+#Move app file to AC_OUTPUT_DIR
+ac_simulator_app_path = "#{options[:outputh_path]}/build_simulator.app"
+
+target = Dir["#{options[:xcode_build_dir]}/Debug-iphonesimulator/*.app"].select{ |f| File.exists? f }.map{ |f| File.absolute_path f }[0]
+move_command = "mv \"#{target}\" \"#{ac_simulator_app_path}\""
+runCommand(move_command)
+
+puts "AC_SIMULATOR_APP_PATH : #{ac_simulator_app_path}"
 
 #Write Environment Variable
 open(ENV['AC_ENV_FILE_PATH'], 'a') { |f|
-  f.puts "AC_SIMULATOR_ARCHIVE_PATH=#{options[:archive_path]}"
+  f.puts "AC_SIMULATOR_APP_PATH=#{options[:ac_simulator_app_path]}"
 }
 
 exit 0

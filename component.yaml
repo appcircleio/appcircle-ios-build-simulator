@@ -45,10 +45,10 @@ inputs:
   description: You can disable the indexing during the build for faster build.
   helpText:
 outputs:
-- key: "AC_SIMULATOR_ARCHIVE_PATH"
-  title: Simulator Archive Path
-  defaultValue: "AC_SIMULATOR_ARCHIVE_PATH"
-  description: Simulator archive path.
+- key: "AC_SIMULATOR_APP_PATH"
+  title: Simulator App Path
+  defaultValue: "AC_SIMULATOR_APP_PATH"
+  description: Simulator app path.
   helpText:
 processFilename: ruby
 processArguments: '%AC_STEP_TEMP%/main.rb'
