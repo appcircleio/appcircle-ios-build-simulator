@@ -1,7 +1,7 @@
 platform: iOS
 buildPlatform:
 displayName: "Xcodebuild for iOS Simulator"
-description: "Build your application for iOS Simulator in x86 architecture (Required for Preview on Device feature). This step creates the unsigned xcarchive file."
+description: "Build your application for iOS Simulator in x86 architecture (Required for Preview on Device feature)."
 inputs:
 - key: "AC_REPOSITORY_DIR"
   defaultValue: "$AC_REPOSITORY_DIR"
