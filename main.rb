@@ -99,7 +99,7 @@ puts "AC_SIMULATOR_APP_PATH : #{ac_simulator_app_path}"
 
 #Write Environment Variable
 open(ENV['AC_ENV_FILE_PATH'], 'a') { |f|
-  f.puts "AC_SIMULATOR_APP_PATH=#{options[:ac_simulator_app_path]}"
+  f.puts "AC_SIMULATOR_APP_PATH=#{ac_simulator_app_path}"
 }
 
 exit 0
