@@ -92,6 +92,7 @@ archive(options)
 
 simulator_dir = "#{options[:outputh_path]}/build_simulator"
 create_simulator_folder_command = "mkdir -p #{simulator_dir}"
+runCommand(create_simulator_folder_command)
 ac_simulator_app_path = "#{simulator_dir}/build_simulator.app"
 
 target = Dir["#{options[:xcode_build_dir]}/Debug-iphonesimulator/*.app"].select{ |f| File.exists? f }.map{ |f| File.absolute_path f }[0]
