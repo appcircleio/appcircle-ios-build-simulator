@@ -34,6 +34,7 @@ inputs:
   description: "Specifies the project path. For example : ./appcircle.xcodeproj"
   helpText:
 - key: "AC_CONFIGURATION_NAME"
+  defaultValue: "Debug"
   isRequired: false
   title: Configuration
   description: The configuration to use. You can overwrite it with this option.

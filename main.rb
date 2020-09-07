@@ -95,7 +95,13 @@ create_simulator_folder_command = "mkdir -p #{simulator_dir}"
 runCommand(create_simulator_folder_command)
 ac_simulator_app_path = "#{simulator_dir}/build_simulator.app"
 
-target = Dir["#{options[:xcode_build_dir]}/Debug-iphonesimulator/*.app"].select{ |f| File.exists? f }.map{ |f| File.absolute_path f }[0]
+if $configuration_name != nil
+  options[:xcode_build_dir] = "#{options[:xcode_build_dir]}/#{$configuration_name}-iphonesimulator"
+else
+  options[:xcode_build_dir] = "#{options[:xcode_build_dir]}/Debug-iphonesimulator"
+end
+
+target = Dir["#{options[:xcode_build_dir]}/*.app"].select{ |f| File.exists? f }.map{ |f| File.absolute_path f }[0]
 move_command = "mv \"#{target}\" \"#{ac_simulator_app_path}\""
 runCommand(move_command)
 
