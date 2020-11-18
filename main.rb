@@ -21,7 +21,7 @@ $configuration_name = (ENV["AC_CONFIGURATION_NAME"] != nil && ENV["AC_CONFIGURAT
 #compiler_index_store_enable - Options: YES, NO
 $compiler_index_store_enable = env_has_key("AC_COMPILER_INDEX_STORE_ENABLE")
 
-options[:extra_options] = ["-sdk iphonesimulator","-arch x86_64"]
+options[:extra_options] = ["ONLY_ACTIVE_ARCH=NO","-arch x86_64"]
 
 if ENV["AC_ARCHIVE_FLAGS"] != "" && ENV["AC_ARCHIVE_FLAGS"] != nil
   options[:extra_options] = options[:extra_options].concat(ENV["AC_ARCHIVE_FLAGS"].split("|"))
