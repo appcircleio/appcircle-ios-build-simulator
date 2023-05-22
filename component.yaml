@@ -1,7 +1,7 @@
 platform: iOS
 buildPlatform:
 displayName: "Xcodebuild for iOS Simulator"
-description: "Build your application for iOS Simulator in x86 architecture (Required for Preview on Device feature)."
+description: "Build your application for iOS Simulator in x86/arm64 architecture."
 inputs:
 - key: "AC_REPOSITORY_DIR"
   defaultValue: "$AC_REPOSITORY_DIR"
@@ -20,6 +20,20 @@ inputs:
   isRequired: true
   title: Scheme
   description: Specifies the project scheme for build.
+  helpText:
+- key: "AC_SIMULATOR_ARCH"
+  editorType: select
+  defaultValue: "x86_64"
+  options: "x86_64,arm64"
+  isRequired: false
+  title: Architecture
+  description: Specifies the CPU architecture for the simulator build.
+  helpText:
+- key: "AC_SIMULATOR_NAME"
+  defaultValue: "$AC_SIMULATOR_NAME"
+  isRequired: false
+  title: Simulator Name
+  description: Destination name of the simulator. Ex. `iPhone 14`. If you set a simulator name, the build will be installed into the given simulator. Please be aware setting the simulator name invalidates the `AC_SIMULATOR_ARCH` option. 
   helpText:
 - key: "AC_ARCHIVE_FLAGS"
   defaultValue: "$AC_XCODE_BUILD_EXTRA_FLAGS"

@@ -13,6 +13,8 @@ Required Input Variables
 
 Optional Input Variables
 - `$AC_REPOSITORY_DIR`: Specifies the cloned repository directory.
+- `$AC_SIMULATOR_ARCH`: Specifies the simulator CPU architecure(x86_64,arm64).
+- `$AC_SIMULATOR_NAME`: Destination name of the simulator. If you set a simulator name, the build will be installed into the given simulator. Please be aware setting the simulator name invalidates the `AC_SIMULATOR_ARCH` option. .
 - `$AC_ARCHIVE_FLAGS`: Specifies the extra xcodebuild flag. For example : -configuration DEBUG
 - `$AC_CONFIGURATION_NAME`: The configuration to use. You can overwrite it with this option.
 - `$AC_COMPILER_INDEX_STORE_ENABLE`: You can disable the indexing during the build for faster build.
