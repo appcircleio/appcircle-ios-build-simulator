@@ -23,8 +23,8 @@ inputs:
   helpText:
 - key: "AC_SIMULATOR_ARCH"
   editorType: select
-  defaultValue: "x86_64"
-  options: "x86_64,arm64"
+  defaultValue: "arm64"
+  options: "arm64,x86_64"
   isRequired: false
   title: Architecture
   description: Specifies the CPU architecture for the simulator build.

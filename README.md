@@ -1,23 +1,22 @@
-# Appcircle Xcodebuild For Simulator
+# Appcircle _Xcodebuild for iOS Simulator_ component
 
-This step builds your application for the iOS Simulator in x86 architecture which is required for the Preview on Device (Appcircle simulator) feature. This step creates an unsigned `xarchive` file.
+Build your application for iOS Simulator in x86/arm64 architecture.
 
-Similar to the Xcode Archive & Export step, this step also uses main configuration parameters like project path, scheme and Xcode version and additionally use parameters like `-sdk iphonesimulator`, `-destination generic/platform=iOS` and `PLATFORM_NAME=iphonesimulator`.
+## Required Inputs
 
-This will output an xarchive file and lets you use the build on the virtual devices like simulators.
+- `AC_REPOSITORY_DIR`: Repository Directory. Specifies the cloned repository directory.
+- `AC_OUTPUT_DIR_PATH`: Output Directory Path. Specifies the path for outputs.
+- `AC_SCHEME`: Scheme. Specifies the project scheme for build.
+- `AC_PROJECT_PATH`: Project Path. Specifies the project path. For example : ./appcircle.xcodeproj
+- `AC_COMPILER_INDEX_STORE_ENABLE`: Compiler Index Store Enable. You can disable the indexing during the build for faster build.
 
-Required Input Variables
-- `$AC_SCHEME`: Specifies the project scheme for build.
-- `$AC_PROJECT_PATH`: Specifies the project path. For example : ./appcircle.xcodeproj.
+## Optional Inputs
 
+- `AC_SIMULATOR_ARCH`: Architecture. Specifies the CPU architecture for the simulator build.
+- `AC_SIMULATOR_NAME`: Simulator Name. Destination name of the simulator. Ex. `iPhone 14`. If you set a simulator name, the build will be installed into the given simulator. Please be aware setting the simulator name invalidates the `AC_SIMULATOR_ARCH` option.
+- `AC_ARCHIVE_FLAGS`: Archive Flags. Specifies the extra xcodebuild flag. For example : -configuration DEBUG
+- `AC_CONFIGURATION_NAME`: Configuration. The configuration to use. You can overwrite it with this option.
 
-Optional Input Variables
-- `$AC_REPOSITORY_DIR`: Specifies the cloned repository directory.
-- `$AC_SIMULATOR_ARCH`: Specifies the simulator CPU architecure(x86_64,arm64).
-- `$AC_SIMULATOR_NAME`: Destination name of the simulator. If you set a simulator name, the build will be installed into the given simulator. Please be aware setting the simulator name invalidates the `AC_SIMULATOR_ARCH` option. .
-- `$AC_ARCHIVE_FLAGS`: Specifies the extra xcodebuild flag. For example : -configuration DEBUG
-- `$AC_CONFIGURATION_NAME`: The configuration to use. You can overwrite it with this option.
-- `$AC_COMPILER_INDEX_STORE_ENABLE`: You can disable the indexing during the build for faster build.
+## Output Variables
 
-Output Variables
-- `$AC_SIMULATOR_ARCHIVE_PATH`: Simulator archive path.
+- `AC_SIMULATOR_APP_PATH`: Simulator App Path. Simulator app path.
