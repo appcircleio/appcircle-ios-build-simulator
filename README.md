@@ -20,3 +20,13 @@ Build your application for iOS Simulator in x86/arm64 architecture.
 ## Output Variables
 
 - `AC_SIMULATOR_APP_PATH`: Simulator App Path. Simulator app path.
+
+## Running tests
+
+Requires [RSpec](https://rspec.info) gem and Ruby standard library (Coverage). No Gemfile or Bundler needed.
+
+```bash
+ruby test/test_main.rb
+```
+
+A pass/fail summary and a coverage report are printed at the end of each run.

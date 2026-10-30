@@ -53,6 +53,8 @@ def install_app(simulator_name, app_path)
   return true
 end
 
+if __FILE__ == $PROGRAM_NAME
+
 options = {}
 options[:repository_path] = ENV["AC_REPOSITORY_DIR"]
 options[:temporary_path] = ENV["AC_TEMP_DIR"] || abort('Missing temporary path.')
@@ -78,6 +80,8 @@ if ENV["AC_ARCHIVE_FLAGS"] != "" && ENV["AC_ARCHIVE_FLAGS"] != nil
 end
 
 options[:xcode_build_dir] = "#{options[:temporary_path]}/SimulatorBuildDir"
+
+end # if __FILE__ == $PROGRAM_NAME
 
 def archive(args)
   repository_path = args[:repository_path]
@@ -142,6 +146,8 @@ def runCommand(command)
   end
 end
 
+if __FILE__ == $PROGRAM_NAME
+
 archive(options)
 #Move app file to AC_OUTPUT_DIR
 
@@ -174,3 +180,5 @@ open(ENV['AC_ENV_FILE_PATH'], 'a') { |f|
 }
 
 exit 0
+
+end # if __FILE__ == $PROGRAM_NAME
